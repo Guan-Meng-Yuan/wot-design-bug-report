@@ -6,10 +6,10 @@
     <input type="digit" v-model="digitValue">
   </div>
   <div>number值:{{ numberValue }}</div>
-  <wd-input label="number类型" v-model="numberValue" type="number"></wd-input>
+  <wd-input :maxlength="-1" @input="onWdInput" label="number类型" v-model="numberValue" type="number"></wd-input>
   <div>
     <div mr-10rpx>原生组件number</div>
-    <input @input="onInput" type="digit" v-model="numberValue">
+    <input :maxlength="-1" @input="onInput" @change="onInputChange" type="digit" v-model="numberValue">
   </div>
 </template>
 
@@ -18,6 +18,12 @@ const digitValue = ref<number>()
 const numberValue = ref<number>()
 const onInput = () => {
   console.log('原生组件输入事件')
+}
+const onWdInput = () => {
+  console.log('wot-design事件')
+}
+const onInputChange=()=>{
+  console.log('原生change字段')
 }
 </script>
 
